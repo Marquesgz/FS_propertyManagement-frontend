@@ -31,4 +31,17 @@ async function addProperty() {
     }
 }
 
+async function deleteProperty(name) {
+    try {
+        await fetch("http://localhost:3000/properties", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name }),
+        });
+        fetchProperties();
+    } catch (error) {
+        console.error("Error deleting property:", error);
+    }
+}
+
 fetchProperties();
