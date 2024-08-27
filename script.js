@@ -7,8 +7,10 @@ async function fetchProperties() {
 
         data.properties.forEach(property => {
             const propertyElement = document.createElement("div");
-            propertyElement.innerHTML = `<strong>${property.name}</strong>: ${property.units.join(', ')} <button onclick="deleteProperty('${property.name}')">Delete</button>`;
-            propertyList.appendChild(propertyElement);
+            propertyElement.innerHTML = `<strong>${property.name}</strong>: ${property.units
+        .map((unit) => `${unit.count} ${unit.type}`)
+        .join(", ")} <button onclick="deleteProperty('${property.name}')">Delete</button>`;
+      propertyList.appendChild(propertyElement);
         });
     } catch (error) {
         console.error("Error fetching properties", error);
@@ -17,7 +19,20 @@ async function fetchProperties() {
 
 async function addProperty() {
     const name = document.getElementById("property-name").value;
-    const units = document.getElementById("property-units").value.split(",");
+    const units = [];
+    const unitTypes = ["kitchen", "bathroom", "bedroom", "living-room"];
+
+    unitTypes.forEach((unit) => {
+        const checkbox = document.getElementById(unit);
+        const countInput = document.getElementById(`${unit}-count`);
+
+        if (checkbox.checked) {
+            const count = parseInt(countInput.value, 10);
+            if (count > 0) {
+                units.push({type: unit, count: count });
+            }
+        }
+    });
 
     try {
         await fetch("http://localhost:3000/properties", {

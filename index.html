@@ -13,7 +13,24 @@
 
         <h2>Add New Property</h2>
         <input type="text" id="property-name" placeholder="Property Name" />
-        <input type="text" id="property-units" placeholder="Units (comma separated)" />
+        <div id="units">
+            <div>
+                <input type="checkbox" id="kitchen" value="kitchen" />Kitchen
+                <input type="number" id="kitchen-count" min="0" placeholder="0" />
+            </div>
+            <div>
+                <input type="checkbox" id="bathroom" value="bathroom" />Bathroom
+                <input type="number" id="bathroom-count" min="0" placeholder="0" /> 
+            </div>
+            <div>
+                <input type="checkbox" id="bedroom" value="bedroom" />Bedroom
+                <input type="number" id="bedroom-count" min="0" placeholder="0" />
+            </div>
+            <div>
+                <input type="checkbox" id="living-room" value="living-room" />Living-room
+                <input type="number" id="living-room-count" min="0" placeholder="0" />
+            </div>
+        </div>
         <button onclick="addProperty()">Add Property</button>
     </div>
     <script src="script.js"></script>    
