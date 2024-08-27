@@ -15,4 +15,20 @@ async function fetchProperties() {
     }
 }
 
+async function addProperty() {
+    const name = document.getElementById("property-name").value;
+    const units = document.getElementById("property-units").value.split(",");
+
+    try {
+        await fetch("http://localhost:3000/properties", {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({ name, units}),
+        });
+        fetchProperties();
+    } catch (error) {
+        console.error("Error adding property:", error);
+    }
+}
+
 fetchProperties();
