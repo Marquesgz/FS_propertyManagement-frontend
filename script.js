@@ -10,15 +10,13 @@ async function fetchProperties(bedrooms = null) {
         const data = await response.json();
         const propertyList = document.getElementById("property-list");
         propertyList.innerHTML = "";
-
        if (data.properties.length > 0) {
         data.properties.forEach(property => {
+            const unitsText = property.units.map(unit => `${unit.count} ${unit.type}`).join(", ");
             const propertyElement = document.createElement("div");
-            propertyElement.innerHTML = `<strong>${property.name}</strong>: ${property.units
-        .map((unit) => `${unit.count} ${unit.type}`)
-        .join(", ")} <button onclick="deleteProperty('${property.name}')">Delete</button>`;
-      propertyList.appendChild(propertyElement);
-        });
+            propertyElement.innerHTML = `<strong>${property.name}</strong>: ${unitsText} <button onclick="deleteProperty('${property.name}')">Delete</button>`;
+            propertyList.appendChild(propertyElement);
+      });
     } else {
         propertyList.innerHTML = "<p>No properties found with that number of bedrooms.</p>";
     }
@@ -31,8 +29,11 @@ async function fetchProperties(bedrooms = null) {
 function searchProperties() {
     const bedroomsInput = document.getElementById("filter-bedrooms").value;
     const bedrooms = bedroomsInput ? parseInt(bedroomsInput, 10) : null;
-
+    
     fetchProperties(bedrooms);
+    
+
+    
 }
 
 async function addProperty() {
