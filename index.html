@@ -8,9 +8,11 @@
 <body>
     <div id="app">
         <h1>Properties List</h1>
-        <div id="property-list"></div>
+        <input type="number" id="filter-bedrooms" placeholder="Number of Bedrooms" min="0" />
         <button onclick="fetchProperties()">Refresh List</button>
-
+        <button onclick="searchProperties()">Search</button>
+        <div id="property-list"></div>
+        
         <h2>Add New Property</h2>
         <input type="text" id="property-name" placeholder="Property Name" />
         <div id="units">
