@@ -1,0 +1,125 @@
+/* General reset for padding, margins and box sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dark theme body background and general text color */
+body {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light grey text */
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #ffffff; /* White heading */
+}
+
+/* Styling the form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #1e1e1e; /* Darker form background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Dark shadow */
+}
+
+/* Input fields and buttons */
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333; /* Dark border */
+    background-color: #2a2a2a; /* Dark input background */
+    color: #e0e0e0; /* Light text color */
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #1e90ff; /* Light blue border on focus */
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #1e90ff; /* Bright blue button */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #db1c1c; /* Slightly darker blue on hover */
+}
+
+/* Property list container */
+#property-list {
+    margin-top: 30px;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+/* Individual property items */
+#property-list div {
+    background-color: #1e1e1e; /* Dark background for property cards */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#property-list div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* More prominent shadow on hover */
+}
+
+#property-list strong {
+    font-size: 1.25rem;
+    color: #ffffff; /* White property name */
+}
+
+/* Flexbox styling for layout */
+.property-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.property-info span {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #b3b3b3; /* Light grey for additional property info */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form, #property-list {
+        padding: 10px;
+    }
+
+    #property-list div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    button {
+        width: 100%;
+    }
+}

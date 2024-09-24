@@ -72,10 +72,11 @@ async function deleteProperty(name) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name }),
         });
-        fetchProperties();
+        fetchProperties(); // Refresh the list after deleting
     } catch (error) {
         console.error("Error deleting property:", error);
     }
 }
+
 
 fetchProperties();
